@@ -60,6 +60,9 @@
 * peut être reconstruit à partir de la base du domain
 * peut être initialisé au démarrage de l'application
 
+### Schémas
+![](http://blog.octo.com/wp-content/uploads/2012/05/archi-21.png "Shémas architecture DDD")
+
 ### Souvenirs
 ![](https://pbs.twimg.com/media/CzzGy6iXUAAlcN5.jpg:large "Communication des domaines")
 ![](https://pbs.twimg.com/media/CzzHY8cXUAACa8n.jpg:large "Architecture")
