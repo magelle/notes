@@ -7,7 +7,7 @@
 
 * L'application est découpée en deux parties
   * Command et Query
-  * Une couche application vient géré l'ensemble
+  * Une couche application vient gérer l'ensemble
   
 ### Partie Command
   * Les commandes sont de simples DTOs
