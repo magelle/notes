@@ -25,7 +25,6 @@ sur une bande de papier (facile à décroché et emmener.
 - Partir de la fin et remonter le flux des évènements
 - Ne pas oublier le dernier évènement : l'argent !
 - Faire vérifier le travail des uns par les autres
-- 
 
 [Ablerto Brandolini Event sotrming](https://www.youtube.com/watch?v=veTVAN0oEkQ&t=1833s)
  
