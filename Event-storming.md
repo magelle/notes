@@ -1,4 +1,4 @@
-# Event sotrming
+# Event storming
 L'event storming vise à mettre toutes les parties prenantes d'un projet dans un même lieu, 
 en même temps pour essayer de décrire de manière collaborative les évènements du système qu'ils essayent de créer.
 
