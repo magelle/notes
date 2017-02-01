@@ -27,14 +27,14 @@ Sur un application legacy, deux stratégies (complémentaires) peuvent être emp
  - Extract d'un méthode vers une autre classe
  - Répartie les responssabilités
  - Permet des tests unitaires plus facile
- - Ctrl + Alt + M (méthode) C (constante) V (variable)
+ - Ctrl + Alt + M (méthode) C (constante) V (variable) P (Paramètre)
 - Créer des wrapper de méthodes statics
  - Permet de créer un mock partiel
  - Facilite le test
 - Créer des wrapper de méthodes system (println)
  - Permet de créer un mock partiel
  - Facilite le test 
- 
+
  ## Pour s'entrainer
 - [Birthday greetings kata](https://github.com/xpmatteo/birthday-greetings-kata) 
 - [Gilded roses kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
