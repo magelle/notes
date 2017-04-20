@@ -16,8 +16,23 @@ J'ai pu dicuter avec l'équipe Elasticsearch présente le mercredi. Pour rappel 
 - jfrog artifactory
 - ikoula, clevercloud
 
-## Université CQRS/ES
-## Atelier CQRS/ES
+## CQRS/ES
+L'event sourcing, a été popularisé par Greg Young. L'idée par du constat que nous stockons dans les base de données, l'état courant de l'application. Ceci présente plusieurs problèmes dont deux principaux :
+ - l'évolution des demandes métiers amène à revoir souvent le modèle de représentation cet état 
+ - lors de la modification de l'état, nous perdons des informations importante : quel est ce changement, qui l'a demander, quel était l'état avant le changement.
+Partant de ce constant l'event sourcing propose de ne plus stocker un état mais plutot d'enregistrer les évènement qui surviennent au sein du système. En stockant les évènement du système, il n'y a plus de modification du modèle de données, seulement de nouveaux évènements. Il devient également possible de récupérer une donnée à n'importe quel moment dans le temps en rejouant les évènements jusqu'à cette date. Pour récupérer l'état actuel d'une données, il faut récupérer tous les évènements ayant eu lieu sur cette données puis les rejouer dans l'ordre. Lorsque nous rejouons tous nos évènements dans notre système, nous créont une projection. Une projection est une représentation particulière de l'ensemble des évènements ayant eu lieu dans le système. Il est possible de créer différentes projections pour différents usages. Nous éliminont alors le problème de la représentation unique de l'état dans les systèmes classiques. Le modèle de données n'est souvent pas adapté à la représentation que nous souhaitons avoir. Une projection étant crée à partir de l'ensemble des évènements, en créer plusieurs est facile. 
+
+Nous modifions donc notre système en créant des évènements mais nous récupérons les informations de clui-ci via les projections.
+
+Cette séparation des parties command et query d'une application est un pattern d'achitecture appelé CQRS (Command Query responsability ségrégation). CQRS n'est pas apparue avec l'event sourcing, seulement, la complexité apporté par l'event sourcing peu être géré avec CQRS. Le pattern CQRS prend ses fondations dans un constat simple : Dans la plupart des systèmes il y a beaucoup plus d'écriture que d'écritures. Ces lectures ont également des formes plus variées. CQRS propose alors de séparer complètement votre applciation en deux : Une partie lecture et une partie écriture. Cette séparation ira jusqu'à la base de données. Les commandes écrirons donc sur un support différent de ceux auprès desquels la partie query ira chercher ses informations.
+
+Bien sur, comme tout outils CQRS et EventSourcing sont des outils et non des Silver Bullets.
+
+L'atelier CQRS/ES lors de la Devoxx a été l'occasion de mettre tout cela en pratique. Partant d'une base de code existante, nous avons ajouter nos propres gestion et création d'évènement ainsi que des projections spécifiques.
+L'exercice est disponible ici : [https://github.com/DevLyon/mixter](https://github.com/DevLyon/mixter)
+
+
+
 ## Javaslang
 - mieux que java 8
 - allant plus loin vers la programmation fonctionnelle
