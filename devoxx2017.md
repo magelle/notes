@@ -34,6 +34,7 @@ Bien sur, comme tout outils CQRS et EventSourcing sont des outils et non des Sil
 
 L'atelier CQRS/ES lors de la Devoxx a été l'occasion de mettre tout cela en pratique. Partant d'une base de code existante, nous avons ajouter nos propres gestion et création d'évènement ainsi que des projections spécifiques.
 L'exercice est disponible ici : [https://github.com/DevLyon/mixter](https://github.com/DevLyon/mixter)
+La présentation est disponible ici : [https://www.youtube.com/watch?v=S1V4t7SXXCU](https://www.youtube.com/watch?v=S1V4t7SXXCU)
 
 ### Javaslang
 Javaslang (renommé vavr depuis) est une librairie pour java. Son objectif est de rendre plus facile la programmation fonctionnel en Java et d'aller plus loin que Java 8. La présentation était l'occasion de voir comment l'utiliser.
