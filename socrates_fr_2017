@@ -1,0 +1,19 @@
+! Functionnal Programming : 
+
+!! What is it ?
+ - Programming with fuction
+ - Lambda calculus
+ - != language fonctionnel
+ - Way of thinkning
+ - Paradygme de programmation
+ 
+!! Fonction
+ - Déclaration : f(x)
+ - Application : f(2)
+ - Substitution : f(2) = 3 (memoization)
+ - Function = ensemble de départ (domain) -> ensemble d'arrivé (co-domain)
+
+!! Conception
+ - Coeur fonctionnel (pure)
+ - à l'exterieur du coeur : les effets de bords
+ - 
