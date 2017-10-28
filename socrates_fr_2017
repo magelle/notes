@@ -24,6 +24,7 @@
  - Partiel => renvoie une fonction
  - lambda = 
  - Functor = Type mapping between categories
+ - Predicate = a function that is evalued to true or false
  - closure = fonction avec des variables non local (pas défini à l'intérieur)
  
 !! Opérations sur les fonctions
