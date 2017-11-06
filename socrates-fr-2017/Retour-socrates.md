@@ -42,4 +42,4 @@ Le chateau est effectivement très beau. C'est une ancienne forteresse transform
 Notre chambre est également très belle, les propriétaires on réussi à garder son esprit d'époque sans pour autant sacrifier le confort.
 Nous profitons du temps qui nous reste pour visiter le chateau, ses salons, ses galeries et sa terasse. Je vous invite à regarder les photos sur leur site pour vous rendre compte de la beauté du lieu.
 
-Viens l'heure du repas. 
+Viens l'heure du repas, on ne m'a pas menti, c'est très bon.
