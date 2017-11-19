@@ -32,6 +32,7 @@ Séparer lecture et écriture de la couche d'accès à la base de données.
 - Lorsque Read et Write sont asynchrone (la mise à jour de Write provoque la mise à jour de Read "plus tard"), il faut gérer la 
 cohérence à terme
 - Read et Write peuvent diverger
+- Comment synchroniser un appel write puis read
 - Le nombre de technos augmente (si base Read différente de Write)
 - Le nombre de livrable augment (si livrable Read différent de Write)
 
