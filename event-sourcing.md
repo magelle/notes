@@ -15,20 +15,32 @@
 - 
 
 ## Comment ?
-
+- Transaction script vs domain model
+- Command sourcing vs event sourcing
+- 
 
 ## Avantages
 - Pas de perte de données
 - Construction de vues spécialisées
 - L'état peut être reconstruit à partir des évènements
+- 
 
 ## Inconvénients
 - Pattern peu utilisé
 - Evolutivité du system faut-il modifier les évènements, quand ?
 - Gérer l'idempotence
 - Que faire si plusieurs évènement sont créés au même moment ?
+- Géré l'ordre des évènements dans les systèmes asynchrones
+- CQRS quasi obligatoire
+- 
 
 ## Typical examples
 - Compte bancaire = une suite d'opérations
 - GPS tracking = une suite de position
+- Systèmes de gestion de version
+- 
+
+## Tips and Tricks
+- Snapshot
+- l'état peut être la source principale de données
 - 
