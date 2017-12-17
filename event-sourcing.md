@@ -32,6 +32,7 @@
 - Que faire si plusieurs évènement sont créés au même moment ?
 - Géré l'ordre des évènements dans les systèmes asynchrones
 - CQRS quasi obligatoire
+- Gestion des systèmes distribués
 - 
 
 ## Typical examples
