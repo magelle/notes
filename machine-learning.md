@@ -29,4 +29,9 @@
  ## System de recommendation
   - recommendations films, livres, ... publicité ciblée
   - algo: Collaborative filtering, content based filtering, hybrid recommender system
-  - 
+ 
+ ## Arbres de décisions
+  - -> random forest = creation de plein d'arbres
+ 
+ ## Réseaux de neuronnes
+ - 
