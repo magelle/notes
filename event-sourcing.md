@@ -44,4 +44,6 @@
 ## Tips and Tricks
 - Snapshot
 - l'état peut être la source principale de données
+- Rendre le traitement des évènements d'un agregat synchrone
+- généré les changements d'états concurrents avec le retry
 - 
