@@ -1,4 +1,4 @@
-# Cherche les bénéfices
+# Chercher les bénéfices
 
 Dans les projets dans lequel j'ai travaillé, j'ai remarqué qu'on avait tendance à oublier quelque chose.
 Pas seulement nous les développeurs mais aussi les responsables fonctionnels et le management. Nous sommes tellement pressés de réaliser les fonctionnalités demandées, tellement concentré sur les problématiques techniques ou fonctionnelles que nous en oublions pourquoi nous travaillons. Il arrive même que certains en arrivent à développer des fonctionnalités qui ne seront jamais utilisées.
