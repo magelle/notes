@@ -5,14 +5,14 @@
 - Au besoin, l'état est reconstruit à partir des évènements
 - Les évènements sont immutable (ils sont arrivés et ne peuvent être modifié ou supprimé)
 - Ils sont l'unique source de vérité
-- 
+- Event : dans le passé, une transition
 
 ## Pourquoi ?
 
 - Le métier résonne plus souvent en terme d'évènements que d'état
 - Piste d'audit gratuite
 - permet de ne pas perdre d'information (lorsque l'état est modifié, on perd l'ancienne valeur)
-- 
+- Ne pas perdre de données
 
 ## Comment ?
 - Transaction script vs domain model
