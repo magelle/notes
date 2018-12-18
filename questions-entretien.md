@@ -1,3 +1,12 @@
+# Déroulé entretien
+
+- Présentation
+- presentation entretien (eval tech, envies, questions autour de nivencia)
+- Revue coding Game
+- présentation candidat
+- questions techniques
+- questions autour de novencia
+
 # Questions entretien
 
 ## Angular
