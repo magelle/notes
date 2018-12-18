@@ -1,0 +1,36 @@
+# Questions entretien
+
+## Angular
+
+- Architecture d'une application Angular
+- Types d'éléments
+- data bindings
+- Decorator @Input / @Output
+- Store centralizé / state management
+- convert to lowercase
+- faire communiquer plusieurs composants
+- component lifecycle : OnInit / OnDestroy
+- Tests
+
+## Java
+
+- Hibernate
+ - ManyToOne / OneToMany
+ - Lazy vs Eager
+ - LazyInitializationException
+ - Proxy
+ - ORM
+- Spring
+ - IOC
+ - Prototypes
+ - @Transactional
+
+- Java8
+ - stream - flatmap
+
+- Architectures
+ - Design patterns
+ - MVC
+ - Tests
+ - Pyramide
+
