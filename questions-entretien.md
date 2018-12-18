@@ -14,21 +14,21 @@
 
 ## Java
 
-- Hibernate
+### Hibernate
  - ManyToOne / OneToMany
  - Lazy vs Eager
  - LazyInitializationException
  - Proxy
  - ORM
-- Spring
+### Spring
  - IOC
  - Prototypes
  - @Transactional
 
-- Java8
+### Java8
  - stream - flatmap
 
-- Architectures
+### Architectures
  - Design patterns
  - MVC
  - Tests
