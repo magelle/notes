@@ -30,8 +30,31 @@
 ## Opérations sur les fonctions
  - composition de fonction f(g(x)) => g o f = h
 
-## Monads, ...
- - todo :'(
+## Monads, Functor, Lenses, ...
+### Data types
+Define what is my value
+- __Option__ : there may be a value
+- __Either__ : there is aither this value (of this type) or that value (of this other type)
+- __Try__: there is either this value (of this type) or this error (aka exception in kotlin)
+- __Validated__: there is either a value (of this type) or an error of this type
+- __Ior__ : there is maybe a value of this type or maybe a value of this other type or maybe both (values of types)
+- __Id__ : There is this:)
+- ...
+### Type classes
+Define what you can do with my value
+- __Show__ : can be transformed to a string
+- __Eq__ : can be compared
+- __Order__ : can be compared
+- __Functor__ : is able to transform the content of a higher kind
+ - ex: Option, Try, ...
+ - map : this is how you transform the existing content
+ - lift : this is how you __will__ transform a content 
+- ...
+### Effects
+- 
+### Lenses
+- 
+
 
 ## Tips to begin
  - https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming
