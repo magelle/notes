@@ -31,6 +31,7 @@
  - composition de fonction f(g(x)) => g o f = h
 
 ## Monads, Functor, Lenses, ...
+__Arrow-kt__ docs may help you : https://arrow-kt.io/docs/
 ### Data types
 Define what is my value
 - __Option__ : there may be a value
@@ -57,6 +58,8 @@ Define what you can do with my value of a define type
 Handle side effects
 - __IO__ : handle io type side effects (network, database, ...)
 - __Async__ : handle async type computation
+- __Promise__: Handle something that will answer later
+- __Effects__ : Use callback coding style
 - ...
 ### Lenses
 get data from data structure and update them without pain
