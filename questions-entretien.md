@@ -24,22 +24,25 @@
 ## Java
 
 ### Hibernate
- - ManyToOne / OneToMany
- - Lazy vs Eager
- - LazyInitializationException
- - Proxy
- - ORM
+- ManyToOne / OneToMany
+- Lazy vs Eager
+- LazyInitializationException
+- Proxy
+- ORM
+
 ### Spring
- - IOC
- - Prototypes
- - @Transactional
+- IOC
+- Prototypes
+- @Transactional
 
 ### Java8
- - stream - flatmap
+- stream - flatmap
 
 ### Architectures
- - Design patterns
- - MVC
- - Tests
- - Pyramide
+- Design patterns
+- MVC
+- Tests
+- Pyramide
 
+### Questions générales
+- Exemple d'un problème résolu
