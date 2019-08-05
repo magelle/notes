@@ -38,11 +38,14 @@
 ### Java8
 - stream - flatmap
 
-### Architectures
+## Design
+- S.O.L.I.D.
+
+## Architectures
 - Design patterns
 - MVC
 - Tests
 - Pyramide
 
-### Questions générales
+## Questions générales
 - Exemple d'un problème résolu
