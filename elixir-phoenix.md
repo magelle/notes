@@ -1,5 +1,11 @@
 # Elixir Phoenix Commanded 
 
+## Mix
+Run a specific env config
+```
+MIX_ENV=prod mix phx.server
+```
+
 ## Creating the database
 
 Create the docker container
