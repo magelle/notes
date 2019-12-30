@@ -43,7 +43,7 @@ iex -S mix phx.server
 Create the json resource
 ```
 cd app/train_train_web
-mix phx.gen.json Fleet Train trains name:string number_of_seats:integer
+mix phx.gen.html Fleet Train trains name:string number_of_seats:integer
 ```
 
 Add the route
