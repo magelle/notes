@@ -28,11 +28,21 @@ create database train_train_test OWNER = train_train_user;
 Create the phoenix poject
 ```
 mix phx.new --umbrella --database postgres train_train
+cd train_train_umbrella
+mix ecto.create
+mix phx.server
+iex -S mix phx.server
 ```
 
 Create the json resource
 ```
-mix phx.gen.json Trains Train trains name:string number_of_seats:integer 
+cd app/train_train_web
+mix phx.gen.json Fleet Train trains name:string number_of_seats:integer
+```
+
+Add the route
+```
+resources "/trains", TrainController
 ```
 
 ## Ecto
