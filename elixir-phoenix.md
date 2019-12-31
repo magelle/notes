@@ -59,3 +59,13 @@ mix ecto.drop
 mix ecto.create
 mix ecto.migrate
 ```
+
+## Commanded
+
+Dispatch a command
+```
+TrainTicket.Application.dispatch(%TrainTicket.Commands.Create{uuid: "6d406027-5271-413d-bc8b-77c9a45cc93d", name: "My Aggregate"})
+```
+
+### Projections using https://github.com/commanded/commanded-ecto-projections
+
