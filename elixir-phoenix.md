@@ -67,5 +67,8 @@ Dispatch a command
 TrainTicket.Application.dispatch(%TrainTicket.Commands.Create{uuid: "6d406027-5271-413d-bc8b-77c9a45cc93d", name: "My Aggregate"})
 ```
 
+Create the eventstore database : 
+```MIX_ENV=dev mix do event_store.create, event_store.init```
+
 ### Projections using https://github.com/commanded/commanded-ecto-projections
 
