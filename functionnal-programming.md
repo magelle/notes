@@ -74,3 +74,10 @@ get data from data structure and update them without pain
  - https://maryrosecook.com/blog/post/a-practical-introduction-to-functional-programming
  - Il était une fois réduce
  
+## From OOP
+
+- Dependency injection : 
+  - just do currryfication 
+  - then partial application
+  - pass function dependencies as parameter
+  - https://fsharpforfunandprofit.com/posts/dependency-injection-1/
