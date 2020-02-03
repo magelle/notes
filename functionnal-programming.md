@@ -81,3 +81,5 @@ get data from data structure and update them without pain
   - then partial application
   - pass function dependencies as parameter
   - https://fsharpforfunandprofit.com/posts/dependency-injection-1/
+- Functionnal Design Pattern : https://fsharpforfunandprofit.com/fppatterns/
+
