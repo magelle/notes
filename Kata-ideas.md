@@ -15,3 +15,8 @@ The goal here is to propose some kata with, as a contraint, a design pattern, an
 ## A Tennis Kata with state machine design pattern
 - a simple tennis kata
 - But each level of the game (game, set, exchange) is a state machine.
+
+## A kata to try the greg young way of doing event sourcing : without agregate
+
+- Try a local [eventstore](https://eventstore.com/)
+- Subject to define, can be the subject of [eventmodeling.org](https://eventmodeling.org/)
