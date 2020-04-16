@@ -186,3 +186,12 @@ In the way a actual text could be.
 - Recursive generator : create a generator which is aware of what it is creating
 - Symbolic calls : to ease debug
 
+## Property base testing in practical
+
+The property base testing does remplace all unit and integration testing.
+Doing so would lead to complicated tests and missing points
+
+For instance Unit Tests are a good way to store not trivial regressions to avoid it to come back (and document it).
+
+Sometimes, brute force is a good solution.
+
