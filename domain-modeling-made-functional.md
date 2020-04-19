@@ -277,3 +277,81 @@ __IO goes to the edges !__
 - An __Anti-Corruption Layer__, or __ACL__, is a component that translates concepts from one domain to another in order to reduce coupling and allow domains to evolve independently.
 - __Persistence Ignorance__ means that the domain model should be based only on the concepts in the domain itself and should not contain any awareness of databases or other persistence mechanisms
 
+## Domain modeling
+
+### Algebraic type system
+
+#### Understanding functions and types
+
+A function is a transformation
+
+A type is a set of possible values that can be used as input or output of a function.
+
+A value is an element of a type.
+
+A function can be a type
+
+You create a new type from existing ones by using AND and OR.
+
+__AND__ means you need a value for each. This is a __product type__.
+
+__OR__ means you need one from all possible values. This is a __sum type__
+
+> We can define a choice of only one element to create a an __alias__
+
+#### Domain modeling with types
+
+The domain model should represent the business model and should be understandable by the business. It then becomes a documentation. this documentation can not become out of sync since it's the code itself.
+
+#### Patterns in domain model
+
+- __Simple values__ which are primitives (such as integer or string). These are not string or integer but ProductCode or OrderId which are concepts in the ubiquitous language.
+- __Combinations of values__ with AND
+- __Choices of values__ with OR
+- __Workflows__, the business processes which has inputs and outputs
+
+Workflows will be represented as functions. When a workflow has several outputs a special type can be created to represent it.
+
+Effects can be added to the returned type to express more precisely how the process will behave. For example, the function can failed and be async. So the function return type would be Async<Result<a, ValidationError>>.
+
+We can create a new type to ease reading : 
+
+```F#
+type ValidationResponse<'a> = Async<Result<'a,ValidationError list>>
+```
+
+#### Identities
+
+- __Value objects__ are types without identities.
+- __Entities__ have an identity other than the contained values.
+
+Entities need identifier. In case of a choice of values it is easier to works with the identifier placed on each choice.
+
+F# code of an entity :
+
+```F#
+[<NoEquality; NoComparison>]
+ 	type Contact = {
+ 	  ContactId : ContactId
+ 	  PhoneNumber : PhoneNumber
+ 	  EmailAddress: EmailAddress
+ 	  }
+ 	  
+printfn "%b" (contact1.ContactId = contact2.ContactId) // true
+```
+
+Composite keys are also possible.
+
+__All types will be immutable so far.__
+
+#### Aggregates
+
+When an entity contains several entities and changing a sub-entities change the top level then this grape of entities is called an aggregate.
+
+Aggregates are useful to ensure the __consistency__ of the values.
+
+When an Aggregate references another one it should be through its reference (identifier).
+
+- An aggregate is a collection of domain objects that can be treated as a single unit, with the top-level Entity acting as the  “root.”
+- All of the changes to objects inside an aggregate must  be applied via the top level to the root, and the aggregate acts as a  consistency boundary to ensure that all of the data inside the aggregate is updated correctly at the same time.
+- An aggregate is the atomic unit of persistence, database transactions, and data transfer.
