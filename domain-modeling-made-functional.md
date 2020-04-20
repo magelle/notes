@@ -99,105 +99,105 @@ Example of how to express the model :
 ```
 Bounded context: Order-Taking 	
 
-​ 	Workflow: "Place order"
-​ 	   triggered by:
-​ 	      "Order form received" event (when Quote is not checked)
-​ 	   primary input:
-​ 	      An order form
-​ 	   other input:
-​ 	      Product catalog
-​ 	   output events:
-​ 	      "Order Placed" event
-​ 	   side-effects:
-​ 	      An acknowledgment is sent to the customer,
-​ 	      along with the placed order
-​ 	
-​ 	data UnvalidatedOrder =
-​ 	    UnvalidatedCustomerInfo
-​ 	    AND UnvalidatedShippingAddress
-​ 	    AND UnvalidatedBillingAddress
-​ 	    AND list of UnvalidatedOrderLine
-​ 	
-​ 	data UnvalidatedOrderLine =
-​ 	    UnvalidatedProductCode
-​ 	    AND UnvalidatedOrderQuantity
+ 	Workflow: "Place order"
+ 	   triggered by:
+ 	      "Order form received" event (when Quote is not checked)
+ 	   primary input:
+ 	      An order form
+ 	   other input:
+ 	      Product catalog
+ 	   output events:
+ 	      "Order Placed" event
+ 	   side-effects:
+ 	      An acknowledgment is sent to the customer,
+ 	      along with the placed order
+ 	
+ 	data UnvalidatedOrder =
+ 	    UnvalidatedCustomerInfo
+ 	    AND UnvalidatedShippingAddress
+ 	    AND UnvalidatedBillingAddress
+ 	    AND list of UnvalidatedOrderLine
+ 	
+ 	data UnvalidatedOrderLine =
+ 	    UnvalidatedProductCode
+ 	    AND UnvalidatedOrderQuantity
 
 	data ValidatedOrder =
-​ 	    ValidatedCustomerInfo
-​ 	    AND ValidatedShippingAddress
-​ 	    AND ValidatedBillingAddress
-​ 	    AND list of ValidatedOrderLine
-​ 	
-​ 	data ValidatedOrderLine =
-​ 	    ValidatedProductCode
-​ 	    AND ValidatedOrderQuantity
-​ 	
+ 	    ValidatedCustomerInfo
+ 	    AND ValidatedShippingAddress
+ 	    AND ValidatedBillingAddress
+ 	    AND list of ValidatedOrderLine
+ 	
+ 	data ValidatedOrderLine =
+ 	    ValidatedProductCode
+ 	    AND ValidatedOrderQuantity
+ 	
 	data PricedOrder =
-​ 	    ValidatedCustomerInfo
-​ 	    AND ValidatedShippingAddress
-​ 	    AND ValidatedBillingAddress
-​ 	    AND list of PricedOrderLine  // different from ValidatedOrderLine
-​ 	    AND AmountToBill             // new
-​ 	
-​ 	data PricedOrderLine =
-​ 	    ValidatedOrderLine
-​ 	    AND LinePrice                // new
+ 	    ValidatedCustomerInfo
+ 	    AND ValidatedShippingAddress
+ 	    AND ValidatedBillingAddress
+ 	    AND list of PricedOrderLine  // different from ValidatedOrderLine
+ 	    AND AmountToBill             // new
+ 	
+ 	data PricedOrderLine =
+ 	    ValidatedOrderLine
+ 	    AND LinePrice                // new
 
 	data PlacedOrderAcknowledgment =
-​ 	    PricedOrder
-​ 	    AND AcknowledgmentLetter
+ 	    PricedOrder
+ 	    AND AcknowledgmentLetter
 
-​ 	data CustomerInfo = ???   // don't know yet
-​ 	data BillingAddress = ??? // don't know yet
-​ 	
-​ 	data WidgetCode = string starting with "W" then 4 digits
-​ 	data GizmoCode = string starting with "G" then 3 digits
-​ 	data ProductCode = WidgetCode OR GizmoCode
+ 	data CustomerInfo = ???   // don't know yet
+ 	data BillingAddress = ??? // don't know yet
+ 	
+ 	data WidgetCode = string starting with "W" then 4 digits
+ 	data GizmoCode = string starting with "G" then 3 digits
+ 	data ProductCode = WidgetCode OR GizmoCode
 
 	data OrderQuantity = UnitQuantity OR KilogramQuantity
-​ 	
-​ 	data UnitQuantity = integer between 1 and ?
-​ 	data KilogramQuantity = decimal between ? and ?
+ 	
+ 	data UnitQuantity = integer between 1 and ?
+ 	data KilogramQuantity = decimal between ? and ?
 ```
 
 ```
 workflow "Place Order" =
-​    input: OrderForm
-​    output:
-​       OrderPlaced event (put on a pile to send to other teams)
-​       OR InvalidOrder (put on appropriate pile)
-​
-​    // step 1
-​    do ValidateOrder
-​    If order is invalid then:
-​        add InvalidOrder to pile
-​        stop
-​
-​    // step 2
-​    do PriceOrder
-​
-​    // step 3
-​    do SendAcknowledgmentToCustomer
-​
-​    // step 4
+    input: OrderForm
+    output:
+       OrderPlaced event (put on a pile to send to other teams)
+       OR InvalidOrder (put on appropriate pile)
+
+    // step 1
+    do ValidateOrder
+    If order is invalid then:
+        add InvalidOrder to pile
+        stop
+
+    // step 2
+    do PriceOrder
+
+    // step 3
+    do SendAcknowledgmentToCustomer
+
+    // step 4
     return OrderPlaced event (if no errors)
 ```
 
 ```
 substep "ValidateOrder" =
-​    input: UnvalidatedOrder
-​    output: ValidatedOrder OR ValidationError
-​    dependencies: CheckProductCodeExists, CheckAddressExists
-​
-​    validate the customer name
-​    check that the shipping and billing address exist
-​    for each line:
-​        check product code syntax
-​        check that product code exists in ProductCatalog
-​
-​    if everything is OK, then:
-​        return ValidatedOrder
-​    else:
+    input: UnvalidatedOrder
+    output: ValidatedOrder OR ValidationError
+    dependencies: CheckProductCodeExists, CheckAddressExists
+
+    validate the customer name
+    check that the shipping and billing address exist
+    for each line:
+        check product code syntax
+        check that product code exists in ProductCatalog
+
+    if everything is OK, then:
+        return ValidatedOrder
+    else:
 	        return ValidationError
 ```
 
@@ -355,3 +355,414 @@ When an Aggregate references another one it should be through its reference (ide
 - An aggregate is a collection of domain objects that can be treated as a single unit, with the top-level Entity acting as the  “root.”
 - All of the changes to objects inside an aggregate must  be applied via the top level to the root, and the aggregate acts as a  consistency boundary to ensure that all of the data inside the aggregate is updated correctly at the same time.
 - An aggregate is the atomic unit of persistence, database transactions, and data transfer.
+
+### Integrity and Consistency in the domain
+
+Goal :
+
+![](ddd-made-functional/pure-domain.png)
+
+Quick definitions :
+
+- __Integrity__: pieces of data follow business rules.
+- __Consistency__: different parts of the domain agree about facts.
+
+#### Simple values
+
+Make constructor private and use a factory function which do the verifications.
+
+In FP this is the __smart constructor__.
+
+```F#
+type UnitQuantity = private UnitQuantity of int
+//                  ^ private constructor
+
+// define a module with the same name as the type
+module UnitQuantity =
+
+  /// Define a "smart constructor" for UnitQuantity
+  /// int -> Result<UnitQuantity,string>
+  let create qty =
+    if qty < 1 then
+      // failure
+      Error "UnitQuantity can not be negative"
+    else if qty > 1000 then
+      // failure
+      Error "UnitQuantity can not be more than 1000"
+    else	
+      // success -- construct the return value
+      Ok (UnitQuantity qty)	
+```
+
+A downside is that the constructor can't be used to pattern match anymore.
+
+There is common code for construction, examples are in `Domain.SimpleTypes.fs`
+
+#### Unit of measure
+
+```F#
+[<Measure>]
+type kg
+
+[<Measure>]
+type m
+
+let fiveKilos = 5.0<kg>
+let fiveMeters = 5.0<m>
+```
+
+All unit of th SI system are already available here : `Microsoft.FSharp.Data.UnitSystems.SI`.
+
+#### Enforce invariant with the type system
+
+Example with a NonEmptyList :
+
+```F#
+type NonEmptyList<'a> = {
+ First: 'a
+ Rest: 'a list
+}
+```
+
+This list can never be empty.
+
+#### Capturing business rule in the type system
+
+Create a type for the unverified data and another for the verified one.
+
+```F#
+type CustomerEmail =
+  | Unverified of EmailAddress
+  | Verified of VerifiedEmailAddress // different from normal EmailAddress, has its private constructor
+  
+```
+
+Create a type to represent different possible states :
+
+```F#
+type BothContactMethods = {
+  Email: EmailContactInfo
+  Address : PostalContactInfo
+  }
+	
+type ContactInfo =
+    | EmailOnly of EmailContactInfo
+    | AddrOnly of PostalContactInfo
+    | EmailAndAddr of BothContactMethods
+
+type Contact = {
+  Name: Name
+  ContactInfo : ContactInfo
+  }
+```
+
+__Make illegal state unrepresentable in our domain__
+
+#### Consistency
+
+##### Consistency of an aggregate
+
+In an __aggregate__ consistency should be verified at top level 
+
+##### Consistency between domains
+
+Domains communicate through events. When an event is lost there is several ways to deal with inconsistency:
+
+- __Do nothing__, the inconsistency is not very bad and it will not cost that much.
+- __Detect__ the lost message and __resend it__.
+- Run a __compensation action__ which "undo" the previous action.
+
+There is also two phase commit but it's rarely really needed. 
+
+Most of the time consistency will be eventual (which is not optional).
+
+##### Consistency between aggregates of the same bounded context
+
+Same __transaction__ of __eventual consistency__ ?
+
+In general eventual consistency through events is enough.
+
+But when the workflow is considered as a single transaction by the business (for example : a money transfer), it may be good to do a single transaction. It might also be an insight that there is need for refactoring.
+
+You shouldn't feel obligated to reuse existing aggregate, when there is need for an aggregate just for one use case, do it.
+
+##### Multiple aggregate on same data
+
+Sometimes, two aggregates operate on the same data and have to verify the same integrity constraint.
+
+In most cases constraints can be shared (if modeled using types). If a type is not applicable, then a validation function can be shared. 
+
+### Modeling Workflows as pipelines
+
+We will do __transformation-oriented programming__.
+
+![](ddd-made-functional/placeorder-pipeline-steps.png)
+
+#### Workflow input
+
+It should be a domain object, always. But it can be an unvalidated one (Example: UnvalidatedOrder), or a command containing the deserialized object.
+
+```F#
+type PlaceOrder = {
+  OrderForm : UnvalidatedOrder
+  Timestamp: DateTime
+  UserId: string
+  // etc
+  }
+```
+
+Fields common to all command can be put in a reusable generic command :
+
+```F#
+type Command<'data> = {
+  Data : 'data
+  Timestamp: DateTime
+  UserId: string
+  // etc
+  }
+  
+type PlaceOrder = Command<UnvalidatedOrder>
+```
+
+#### Modeling Order as a set of states
+
+![](ddd-made-functional/state-orderform.png)
+
+Create a new type for each state. It remove implicit states and conditional fields.
+
+When adding new states, the existing code will not be impacted.
+
+#### State machines
+
+What was defined is a state machine.
+
+The advantage of using a state machine are : 
+
+- Each states can have different behavior.
+- All states are explicitly documented
+- It is a design tool that enforce you to think about every possibility that could occur.
+
+How to do it :
+
+- Every state has its own type.
+- The set of states is represented by a choice. 
+- A command handler accept all the possible states and return a new one (which can be the same).
+
+From the caller's point of view the set of states is one thing but internally each are treated separately.
+
+#### Modeling each Step of the workflow with types
+
+##### Validation
+
+![](ddd-made-functional/validation.png)
+
+```F#
+type CheckProductCodeExists =
+  ProductCode -> bool
+  // ^input      ^output
+  
+type CheckedAddress = CheckedAddress of UnvalidatedAddress
+
+type AddressValidationError = AddressValidationError of string
+ 	
+ 	type CheckAddressExists =
+ 	  UnvalidatedAddress -> Result<CheckedAddress,AddressValidationError>
+ 	  // ^input                    ^output
+
+type ValidateOrder =
+ 	  CheckProductCodeExists    // dependency
+ 	    -> CheckAddressExists   // dependency
+ 	    -> UnvalidatedOrder     // input
+ 	    -> Result<ValidatedOrder,ValidationError>  // output
+```
+
+##### Pricing steps
+
+![](ddd-made-functional/pricing.png)
+
+```F#
+type GetProductPrice =
+ 	  ProductCode -> Price
+
+type PriceOrder =
+ 	  GetProductPrice      // dependency
+ 	    -> ValidatedOrder  // input
+ 	    -> PricedOrder     // output
+```
+
+##### The acknowledge step
+
+```F#
+type HtmlString =
+ 	  HtmlString of string
+ 	
+ 	type OrderAcknowledgment = {
+ 	  EmailAddress : EmailAddress
+ 	  Letter : HtmlString
+ 	  }
+
+type CreateOrderAcknowledgmentLetter =
+ 	  PricedOrder -> HtmlString
+
+type SendResult = Sent | NotSent
+ 	
+ 	type SendOrderAcknowledgment =
+ 	  OrderAcknowledgment -> SendResult
+
+type OrderAcknowledgmentSent = {
+ 	  OrderId : OrderId
+ 	  EmailAddress : EmailAddress
+ 	  }
+
+type AcknowledgeOrder =
+  CreateOrderAcknowledgmentLetter     // dependency
+    -> SendOrderAcknowledgment        // dependency
+    -> PricedOrder                    // input
+    -> OrderAcknowledgmentSent option // output
+```
+
+##### Creating the events to return
+
+```F#
+type OrderPlaced = PricedOrder
+ 	type BillableOrderPlaced = {
+ 	  OrderId : OrderId
+ 	  BillingAddress: Address
+ 	  AmountToBill : BillingAmount
+ 	  }
+
+// As we are likely to add new event type a choice is better than a product type
+type PlaceOrderEvent =
+ 	  | OrderPlaced of OrderPlaced
+ 	  | BillableOrderPlaced of BillableOrderPlaced
+ 	  | AcknowledgmentSent  of OrderAcknowledgmentSent
+
+type CreateEvents =
+ 	  PricedOrder -> PlaceOrderEvent list
+```
+
+	#### Documenting effects
+
+##### Invalidation step
+
+Combining Async and result will do :
+
+```F#
+type AsyncResult<'success,'failure> = Async<Result<'success,'failure>>
+```
+
+Now Checking the address will be :
+
+```F#
+type CheckAddressExists =
+  UnvalidatedAddress -> AsyncResult<CheckedAddress,AddressValidationError>
+```
+
+So will Validate Order :
+
+```F#
+type ValidateOrder =
+  CheckProductCodeExists    // dependency
+    -> CheckAddressExists   // AsyncResult dependency
+    -> UnvalidatedOrder     // input
+    -> AsyncResult<ValidatedOrder,ValidationError list>  // output
+```
+
+##### In the pricing step
+
+```F#
+type PricingError = PricingError of string
+ 	
+type PriceOrder =
+  GetProductPrice                       // dependency
+    -> ValidatedOrder                   // input
+    -> Result<PricedOrder,PricingError> // output
+```
+
+##### In the acknowledge step
+
+```F#
+type SendOrderAcknowledgment =
+  OrderAcknowledgment -> Async<SendResult>
+  
+type AcknowledgeOrder =
+  CreateOrderAcknowledgmentLetter     // dependency
+    -> SendOrderAcknowledgment        // Async dependency
+    -> PricedOrder                    // input
+    -> Async<OrderAcknowledgmentSent option> // Async output
+```
+
+#### Composing workflow from steps
+
+Actual definition of steps :
+
+```F#
+type ValidateOrder =
+  UnvalidatedOrder                                       // input
+    -> AsyncResult<ValidatedOrder,ValidationError list>  // output
+
+type PriceOrder =
+  ValidatedOrder                            // input
+    -> Result<PricedOrder,PricingError>     // output
+
+type AcknowledgeOrder =
+  PricedOrder                                // input
+    -> Async<OrderAcknowledgmentSent option> // output
+
+type CreateEvents =
+    PricedOrder               // input
+      -> PlaceOrderEvent list // output
+```
+
+#### Are dependencies part of the design ?
+
+- For exposed functions of a public API, hide dependency information from caller.
+- For function to use internally, be explicit about their dependencies. 
+
+Here we should expose :
+
+```F#
+type PlaceOrderWorkflow =
+  PlaceOrder                                             // input
+    -> AsyncResult<PlaceOrderEvent list,PlaceOrderError> // output	
+```
+
+#### Complete pipeline
+
+See the example code of the book.
+
+In resume : 
+
+- In a first file :
+  - The input data types
+  - The Command types
+  - The public API :
+    - The public function
+    - The different result types
+- In another file :
+  - All the states
+  - All the internal steps
+
+#### Long running workflows
+
+How would it affect the design if :
+
+- the workflow can not be done in a short time
+- some step are done by another service / a user
+
+We would need to store the state, wait for the async task to be done, reload the state and continue the workflow.
+
+![](ddd-made-functional/saga1.png)
+
+![](ddd-made-functional/saga2.png)
+
+Some times these kind of long running workflows are called __Sagas__.
+
+In case thing gets complicated we could be in need of a __Process manager__.
+
+## Implementing the model
+
+
+
+
+
