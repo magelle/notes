@@ -23,6 +23,14 @@
 
 ## Java
 
+- static
+- protected
+- polymorphisme
+
+
+### Java8
+- stream - flatmap
+
 ### Hibernate
 - ManyToOne / OneToMany
 - Lazy vs Eager
@@ -34,9 +42,6 @@
 - IOC
 - Prototypes
 - @Transactional
-
-### Java8
-- stream - flatmap
 
 ## Design
 - S.O.L.I.D.
