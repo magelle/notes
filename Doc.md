@@ -5,3 +5,7 @@ https://12factor.net/fr/
 # Refactoring and patterns
 
 https://sourcemaking.com/refactoring
+
+# Learning Languages
+
+https://koans.app/

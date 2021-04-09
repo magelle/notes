@@ -20,3 +20,8 @@ The goal here is to propose some kata with, as a contraint, a design pattern, an
 
 - Try a local [eventstore](https://eventstore.com/)
 - Subject to define, can be the subject of [eventmodeling.org](https://eventmodeling.org/)
+
+## Trading Card Game Kata
+
+[Trading Card Game](https://codingdojo.org/kata/TradingCardGame/)
+
