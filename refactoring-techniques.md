@@ -35,7 +35,10 @@ Sur un application legacy, deux stratégies (complémentaires) peuvent être emp
  - Permet de créer un mock partiel
  - Facilite le test 
 
- ## Pour s'entrainer
+## Articles 
+[Rewrite vs refatctoring 17 essential reads](https://techbeacon.com/app-dev-testing/rewrites-vs-refactoring-17-essential-reads-developers]
+
+## Pour s'entrainer
 - [Birthday greetings kata](https://github.com/xpmatteo/birthday-greetings-kata) 
 - [Gilded roses kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
 - Les kata de refactoring d'[Emily Bach](https://github.com/emilybache)
