@@ -42,6 +42,6 @@ Sur un application legacy, deux stratégies (complémentaires) peuvent être emp
 - [Birthday greetings kata](https://github.com/xpmatteo/birthday-greetings-kata) 
 - [Gilded roses kata](https://github.com/emilybache/GildedRose-Refactoring-Kata)
 - Les kata de refactoring d'[Emily Bach](https://github.com/emilybache)
-
+- [Kata](https://katalyst.codurance.com/browse)
 
 

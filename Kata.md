@@ -6,4 +6,6 @@
 - BirthGreetings
 - LeapYear
 - FruitShop Kata
-- 
+
+- [Kata-logs](https://kata-log.rocks/)
+- [Katalyst](https://katalyst.codurance.com/browse)
