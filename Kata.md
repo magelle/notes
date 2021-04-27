@@ -9,3 +9,4 @@
 
 - [Kata-logs](https://kata-log.rocks/)
 - [Katalyst](https://katalyst.codurance.com/browse)
+- [Public APIs](https://github.com/public-apis/public-apis)
