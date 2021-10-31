@@ -25,3 +25,9 @@ The goal here is to propose some kata with, as a contraint, a design pattern, an
 
 [Trading Card Game](https://codingdojo.org/kata/TradingCardGame/)
 
+## Big projects or architecture / DDD Kata
+
+- Auction
+- Activity report
+- Train Trip kata
+
