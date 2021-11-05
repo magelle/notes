@@ -29,4 +29,4 @@ README
 | 8 | Console Test | -> | File |
 | 9 | Console | -> | File |
 
-![Hexagonal architecture schema](https://github.com/magelle/notes/raw/master/hexagonal-architecture.png)
+![Hexagonal architecture schema](https://github.com/magelle/notes/raw/master/architecture/hexagonal-architecture.png)
