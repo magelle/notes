@@ -1,4 +1,4 @@
-# Second leval Kata Ideas
+# Kata Ideas
 
 Here are some ideas of not so obvious kata.
 
