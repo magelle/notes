@@ -11,3 +11,4 @@
 - [Katalyst](https://katalyst.codurance.com/browse)
 - [Public APIs](https://github.com/public-apis/public-apis)
 - [Transport tycoon kata](https://github.com/Softwarepark/exercises/blob/master/transport-tycoon-1.md)
+- [Architecture kata](https://medium.com/nick-tune-tech-strategy-blog/architecture-ddd-kata-online-car-dealership-540c534121e2)
